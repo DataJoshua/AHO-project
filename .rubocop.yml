@@ -1,0 +1,32 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 3.3.0
+  NewCops: enable
+  Exclude:
+    - config/**/*
+    - db/**/*
+    - bin/**/*
+    - tmp/**/*
+    - vendor/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - config/**/*
+
+Metrics/MethodLength:
+  Max: 25
+
+Layout/FirstArgumentIndentation:
+  Enabled: false
