@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action -> { authorize! post }
 
-  expose :posts, -> { Post.approved.includes(:region, :rich_text_content, user: %i[roles]).kept }
+  expose :posts, -> { Post.approved.includes(:region, user: %i[roles]).kept }
   expose :post
 
   def index; end
