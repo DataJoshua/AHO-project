@@ -1,3 +1,13 @@
 h1
   = "Welcome Admin #{current_user.email}"
 
+h1
+  | Post Under review
+
+- posts_under_review.each do |post|
+  = render "shared/post", post: post
+
+h1
+  | Your Posts
+- posts.each do |post|
+  = render "shared/post", post: post
