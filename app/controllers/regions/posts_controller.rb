@@ -1,4 +1,4 @@
-module Posts
+module Regions
   class PostsController < ApplicationController
     include Authorization
     before_action :authenticate_user!
@@ -33,24 +33,12 @@ module Posts
       if update_post.success?
         flash[:notice] = "Post updated"
 
-        redirect_to region_path(region)
+        redirect_to post_path(post)
       else
         flash[:alert] = update_post.errors
 
         render :edit, status: :unprocessable_entity
       end
-    end
-
-    def destroy
-      authorize! post
-
-      if destroy_post.success?
-        flash[:notice] = "Post deleted succesfully"
-      else
-        flash[:alert] = destroy_post.errors
-      end
-
-      redirect_to region_path(region)
     end
 
     private
@@ -61,10 +49,6 @@ module Posts
 
     def update_post
       @update_post ||= Posts::Update.call(post_params:, post:)
-    end
-
-    def destroy_post
-      @destroy_post ||= Posts::Destroy.call(post:)
     end
 
     def post_params

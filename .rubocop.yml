@@ -11,8 +11,12 @@ AllCops:
     - bin/**/*
     - tmp/**/*
     - vendor/**/*
+    - app/models/role.rb
 
 Style/Documentation:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
   Enabled: false
 
 Style/ClassAndModuleChildren:

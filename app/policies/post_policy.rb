@@ -1,5 +1,5 @@
 class PostPolicy < ApplicationPolicy
-  def index
+  def index?
     true
   end
 

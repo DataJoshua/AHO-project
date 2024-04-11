@@ -3,8 +3,6 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
 
-  get "up" => "rails/health#show", as: :rails_health_check
-
   root "regions#index"
 
   authenticate :user, ->(u) { u.has_role?(:admin) } do
@@ -14,11 +12,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :regions, only: %i[show] do
-    resources :posts, only: %i[destroy create new edit update], module: :posts do
-      resource :send_review, only: %i[create]
-    end
+  resources :regions, only: %i[index show] do
+    resources :posts, only: %i[create new edit update], module: :regions
   end
 
-  resources :posts, only: %i[index show]
+  resources :posts, only: %i[index show destroy]
 end
