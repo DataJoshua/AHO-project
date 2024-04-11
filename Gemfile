@@ -89,3 +89,5 @@ gem "faker", "~> 3.3"
 gem "interactor", "~> 3.1"
 
 gem "enumerize", "~> 2.8"
+
+gem "action_policy", "~> 0.6.8"

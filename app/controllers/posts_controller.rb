@@ -1,16 +1,21 @@
 class PostsController < ApplicationController
+  include Authorization
   before_action :authenticate_user!
 
   expose :post
   expose :region, -> { Region.find(params[:region_id]) }
 
-  def index; end
+  def new
+    authorize! region, with: PostPolicy
+  end
 
-  def new; end
-
-  def edit; end
+  def edit
+    authorize! post
+  end
 
   def create
+    authorize! region, with: PostPolicy
+
     if create_post.success?
       flash[:notice] = "Post created"
       redirect_to region_path(region)
@@ -22,6 +27,8 @@ class PostsController < ApplicationController
   end
 
   def update
+    authorize! post
+
     if update_post.success?
       flash[:notice] = "Post updated"
 
@@ -34,6 +41,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    authorize! post
+
     if destroy_post.success?
       flash[:notice] = "Post deleted succesfully"
     else

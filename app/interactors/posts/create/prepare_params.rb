@@ -11,10 +11,15 @@ module Posts
 
       private
 
+      def state
+        user.has_role?(:admin) ? "approved" : "draft"
+      end
+
       def post_params_additional_params
         {
           user:,
-          region:
+          region:,
+          state:
         }
       end
     end
