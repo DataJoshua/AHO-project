@@ -8,7 +8,7 @@ class BaseQuery
 
   def all
     filter_params.reduce(relation) do |relation, (key, value)|
-      public_send("sort_by_#{key}", relation, value)
+      public_send("by_#{key}", relation, value)
     end
   end
 end

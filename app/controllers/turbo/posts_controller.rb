@@ -1,6 +1,8 @@
 module Turbo
   class PostsController < ApplicationController
-    expose :raw_posts, -> { Post.kept }
+    include Rails.application.routes.url_helpers
+
+    expose :raw_posts, -> { Post.approved }
     expose :posts, -> { PostQuery.new(query_params, raw_posts).all }
 
     def index; end
@@ -8,7 +10,7 @@ module Turbo
     private
 
     def query_params
-      params.require(:query).permit(:author, :region).to_h
+      params.require(:query).permit(:author, :region, :date).to_h
     end
   end
 end

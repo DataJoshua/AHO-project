@@ -1,7 +1,10 @@
-= form_with(scope: :query, url: turbo_posts_path, turbo: true, method: :get, data: { turbo_stream: true }) do |f|
-  = f.select :region, options_for_select(Region.pluck(:name, :id))
-  = f.select :author, options_for_select(User.pluck(:email, :id))
-  = f.submit
+= form_with(scope: :query, url: turbo_posts_path,
+                           method: :get,
+                           data: { turbo_stream: true,
+                                   controller: "search" }) do |f|
+  = f.select :region, options_for_select(Region.pluck(:name, :id)),{}, data: { action: "change->search#execute"}
+  = f.select :author, options_for_select(User.pluck(:email, :id)),{}, data: { action: "change->search#execute"}
+  = f.date_field :date, data: { action: "change->search#execute" }
 
-= turbo_frame_tag "posts" do
+= turbo_frame_tag "post-wrapper" do
   = render "posts", posts: posts
