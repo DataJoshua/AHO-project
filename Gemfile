@@ -79,3 +79,5 @@ group :test do
 end
 
 gem "rolify", "~> 6.0"
+
+gem "decent_exposure", "~> 3.0"
