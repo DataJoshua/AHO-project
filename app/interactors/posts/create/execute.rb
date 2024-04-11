@@ -6,7 +6,7 @@ module Posts
       delegate :post, to: :context
 
       def call
-        content.fail!(errors: post_errors) unless post.save
+        context.fail!(errors: post_errors) unless post.save
       end
 
       private

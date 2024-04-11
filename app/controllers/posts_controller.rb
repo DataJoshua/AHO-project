@@ -3,7 +3,6 @@ class PostsController < ApplicationController
 
   expose :post
   expose :region, -> { Region.find(params[:region_id]) }
-  expose :posts, -> { region.posts }
 
   def index; end
 
@@ -35,7 +34,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post.destroy
+    if destroy_post.success?
+      flash[:notice] = "Post deleted succesfully"
+    else
+      flash[:alert] = destroy_post.errors
+    end
 
     redirect_to region_path(region)
   end
@@ -48,6 +51,10 @@ class PostsController < ApplicationController
 
   def update_post
     @update_post ||= Posts::Update.call(post_params:, post:)
+  end
+
+  def destroy_post
+    @destroy_post ||= Posts::Destroy.call(post:)
   end
 
   def post_params

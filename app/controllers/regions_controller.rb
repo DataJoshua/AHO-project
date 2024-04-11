@@ -3,7 +3,7 @@ class RegionsController < ApplicationController
 
   expose :region
   expose :regions, -> { Region.all }
-  expose :posts, -> { region.posts }
+  expose :posts, -> { region.posts.kept }
 
   def index; end
 
