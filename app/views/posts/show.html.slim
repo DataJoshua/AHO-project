@@ -1,0 +1,14 @@
+h1
+  = post.title
+p
+  = post.content
+
+
+- if allowed_to?(:destroy?, post)
+  = link_to "destroy", region_post_path(post.region || region, post), data: { turbo_method: :delete }
+- if allowed_to?(:edit?, post)
+  = link_to "edit", edit_region_post_path(post.region || region, post)
+- if allowed_to?(:create?, post, with: ApprovePolicy)
+  = button_to "approve", post_approve_path(post)
+- if allowed_to?(:create?, post, with: RejectPolicy)
+  = button_to "reject", post_reject_path(post)
