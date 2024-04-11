@@ -89,5 +89,5 @@ russian_regions = [
 ]
 
 russian_regions.each do |region|
-  Region.create!(region)
+  region = Region.create!(region)
 end

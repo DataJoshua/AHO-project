@@ -17,10 +17,14 @@ h2
           |  characters minimum
 
     = f.password_field :password, autocomplete: "new-password"
-
+  
   .field
     = f.label :password_confirmation
     = f.password_field :password_confirmation, autocomplete: "new-password"
+
+  .field
+    = f.select :region_id, options_for_select(Region.pluck(:name, :id)) 
+
   .actions
     = f.submit "Sign up"
 

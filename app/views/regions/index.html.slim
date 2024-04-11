@@ -6,3 +6,7 @@
       = region.description
     h2
       = link_to "Go to the region", region
+    div
+      - if current_user.region === region
+        h1
+          | this is your region

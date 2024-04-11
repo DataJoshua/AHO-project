@@ -1,13 +1,12 @@
 after :regions do
-  region = Region.first
-
   admin_attr = {
     email: "admin@example.com",
-    password: "abcdF2!",
-    region: region
+    password: "abcdF2!"
   }
 
-  admin = User.create!(admin_attr)
+  admin = User.new(admin_attr)
+  admin.admin_created = true
 
+  admin.save
   admin.add_role :admin
 end
