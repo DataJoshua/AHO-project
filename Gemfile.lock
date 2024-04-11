@@ -112,6 +112,8 @@ GEM
     discard (1.3.0)
       activerecord (>= 4.2, < 8)
     drb (2.2.1)
+    enumerize (2.8.1)
+      activesupport (>= 3.2)
     erubi (1.12.0)
     faker (3.3.1)
       i18n (>= 1.8.11, < 2)
@@ -342,6 +344,7 @@ DEPENDENCIES
   decent_exposure (~> 3.0)
   devise (~> 4.9)
   discard
+  enumerize (~> 2.8)
   faker (~> 3.3)
   image_processing (~> 1.2)
   importmap-rails
