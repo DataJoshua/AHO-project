@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: "users/registrations"
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
       resource :approve, only: %i[create]
       resource :reject, only: %i[create]
     end
+
+    mount Sidekiq::Web => "/sidekiq"
   end
 
   authenticate :user, ->(u) { u.has_role?(:user) } do

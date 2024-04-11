@@ -91,3 +91,5 @@ gem "interactor", "~> 3.1"
 gem "enumerize", "~> 2.8"
 
 gem "action_policy", "~> 0.6.8"
+
+gem "sidekiq", "~> 7.2"

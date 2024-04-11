@@ -6,6 +6,7 @@
 
 /.bundle
 .env
+dump.rdb
 
 /.env*
 !/.env*.erb
