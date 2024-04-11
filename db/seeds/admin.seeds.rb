@@ -4,7 +4,7 @@ after :regions do
   admin_attr = {
     email: "admin@example.com",
     password: "abcdF2!",
-    region_id: region.id
+    region: region
   }
 
   admin = User.create!(admin_attr)
