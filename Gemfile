@@ -83,3 +83,5 @@ gem "rolify", "~> 6.0"
 gem "decent_exposure", "~> 3.0"
 
 gem "faker", "~> 3.3"
+
+gem "interactor", "~> 3.1"

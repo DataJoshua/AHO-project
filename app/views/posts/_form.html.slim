@@ -1,0 +1,12 @@
+= form_with model: [region, post] do |form|
+  .py-2.px-5
+    .mb-4
+      = form.label :title, class: "block text-gray-700 text-sm font-bold mb-2"
+      = form.text_field :title, class: "form-input mt-1 block w-full"
+
+    .mb-4
+      = form.label :content, class: "block text-gray-700 text-sm font-bold mb-2"
+      = form.rich_text_area :content, class: "form-input mt-1 block w-full"
+
+    .mt-4
+      = form.submit "Create Post", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
