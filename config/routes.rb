@@ -30,5 +30,9 @@ Rails.application.routes.draw do
     resources :posts, only: %i[create new edit update], module: :regions
   end
 
+  namespace :turbo do
+    resources :posts, only: %i[index]
+  end
+
   resources :posts, only: %i[index show destroy]
 end

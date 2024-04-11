@@ -1,2 +1,7 @@
-- posts.each do |post|
-  = render "shared/post", post: post
+= form_with(scope: :query, url: turbo_posts_path, turbo: true, method: :get, data: { turbo_stream: true }) do |f|
+  = f.select :region, options_for_select(Region.pluck(:name, :id))
+  = f.select :author, options_for_select(User.pluck(:email, :id))
+  = f.submit
+
+= turbo_frame_tag "posts" do
+  = render "posts", posts: posts
