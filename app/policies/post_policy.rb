@@ -1,4 +1,12 @@
 class PostPolicy < ApplicationPolicy
+  def index
+    true
+  end
+
+  def show?
+    record.approved? || owner?
+  end
+
   def new?
     user.region == record || admin?
   end
