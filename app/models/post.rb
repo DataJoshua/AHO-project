@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_rich_text :content
 
   enumerize :state, in: STATES, predicates: true, scope: :shallow
+  validates :approved_at, presence: false, on: :create
   validates :state, presence: true
 
   belongs_to :user
