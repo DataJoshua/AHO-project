@@ -19,7 +19,8 @@ module Regions
 
       if create_post.success?
         flash[:notice] = "Post created"
-        redirect_to region_path(region)
+
+        redirect_to posts_path
       else
         flash[:alert] = create_post.errors
 

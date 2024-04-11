@@ -1,11 +1,8 @@
 - regions.each do |region|
-  .bg-slate-200.m-5
-    h1
-      = region.name
-    p
-      = region.description
-    h2
-      = link_to "Go to the region", region
+  = link_to region do
+    .bg-slate-200.m-5
+      h1
+        = region.name
     div
       - if current_user.region === region
         h1
