@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       flash[:alert] = destroy_post.errors
     end
 
-    redirect_to posts_path
+    redirect_to dashboard_path
   end
 
   private

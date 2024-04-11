@@ -4,7 +4,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def show?
-    record.approved? || owner?
+    admin? || (record.approved? || owner?)
   end
 
   def new?

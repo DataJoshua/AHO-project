@@ -1,0 +1,17 @@
+h1
+  = "Welcome User #{current_user.email}"
+
+.text-center.text-xl
+  | Your Posts
+- posts.each do |post|
+  .bg-slate-300.p-3.m-2
+    h1
+      = post.title
+    p
+      = post.state
+    - if allowed_to?(:create?, post, with: SendReviewPolicy)
+      = button_to "send to review", post_send_review_path(post)
+    - if allowed_to?(:destroy?, post)
+      = link_to "destroy", post_path(post), data: { turbo_method: :delete }
+
+= link_to "create new post", new_region_post_path(current_user.region)
