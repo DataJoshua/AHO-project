@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+FullStack проект на Rails, который требует прохождения тестов. 
 
-Things you may want to cover:
+Администратор по умолчанию:
 
-* Ruby version
+* email: admin@example.com
+* password: abcdF2!
+  
+Админ создается после миграции базы данных с помощью seeds в admin.seeds.rb. 
 
-* System dependencies
+Проект использует Redis и Sidekiq для фоновых заданий. Все требуемые зависимости можно найти в Brewfile. 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Чтобы запустить проект в режиме разработки, нужно выполнить команду ```bin/dev```.
