@@ -1,0 +1,20 @@
+
+header
+  nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800"
+    div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
+      h1.text-xl
+        - if user_signed_in?
+          = "Welcome #{current_user.email}"
+        - else
+          = "Welcome"
+
+      div class="justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2"
+        ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0"
+          - if user_signed_in?
+            = link_to "Home", root_path, class: header_link_class
+            = link_to "Posts", posts_path, class: header_link_class
+            = link_to "dashboard", dashboard_path, class: header_link_class
+            = link_to "log out", destroy_user_session_path, data: { turbo_method: :delete }
+          - else
+            = link_to "Login", new_user_session_path, class: header_link_class
+            = link_to "Register", new_user_registration_path, class: header_link_class

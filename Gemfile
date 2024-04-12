@@ -95,3 +95,5 @@ gem "enumerize", "~> 2.8"
 gem "action_policy", "~> 0.6.8"
 
 gem "sidekiq", "~> 7.2"
+
+gem "inline_svg", "~> 1.9"
