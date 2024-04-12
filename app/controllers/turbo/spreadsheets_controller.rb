@@ -8,6 +8,7 @@ module Turbo
 
     expose :exels, -> { current_user.exels }
 
+    # rubocop:disable Metrics/AbcSize
     def create
       file_data = Post.to_xlsx(instances: posts.to_a, spreadsheet_columns: lambda { |instance|
         [
@@ -34,6 +35,7 @@ module Turbo
         render :new
       end
     end
+    # rubocop:enable Metrics/AbcSize
 
     private
 

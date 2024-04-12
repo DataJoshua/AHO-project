@@ -12,6 +12,7 @@ AllCops:
     - tmp/**/*
     - vendor/**/*
     - app/models/role.rb
+    - app/helpers/*
 
 Style/Documentation:
   Enabled: false
