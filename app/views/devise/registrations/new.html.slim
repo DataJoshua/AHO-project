@@ -24,7 +24,8 @@ h1[class=dashboard_title_class]
       = f.password_field :password_confirmation, autocomplete: "new-password", class: input_class
 
     .mb-5
-      = f.select :region_id, options_for_select(Region.pluck(:name, :id)) 
+      = f.label :region, class: label_class
+      = f.select :region_id, options_for_select([["Select Region", ""]].concat(Region.pluck(:name, :id))), {} , class: input_class
 
     .actions.flex.gap-2.flex-col
       = f.submit "Sign up", class: input_button_green_class
