@@ -1,0 +1,21 @@
+h1[class=dashboard_title_class]
+  | Авторизоваться
+
+.max-w-sm.mx-auto
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .mb-5
+      = f.label :email, class: label_class
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: input_class 
+
+    .mb-5
+      = f.label :password, class: label_class
+      = f.password_field :password, autocomplete: "current-password", class: input_class
+
+    - if devise_mapping.rememberable?
+      .mb-5.flex.gap-2
+        = f.check_box :remember_me
+        = f.label :remember_me, class: label_class
+
+    .actions.flex.gap-2.flex-col
+      = f.submit "Log in", class: input_button_green_class
+      = render "devise/shared/links"

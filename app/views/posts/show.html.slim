@@ -1,14 +1,14 @@
-.bg-slate-300.p-4.m-5
-  h1
+section[class=jumbo_wrapper_class]
+  h1[class=jumbo_title_class]
     = post.title
-  p
+  p[class=jumbo_content_class]
     = post.content
-
-  - if allowed_to?(:destroy?, post)
-    = link_to "destroy", post_path(post), data: { turbo_method: :delete }, class: "bg-blue-300 p-2 rounded-lg"
-  - if allowed_to?(:edit?, post)
-    = link_to "edit", edit_region_post_path(post.region, post), class: "bg-blue-300 p-2 rounded-lg"
-  - if allowed_to?(:create?, post, with: ApprovePolicy)
-    = button_to "approve", post_approve_path(post), class: "bg-blue-300 p-2 rounded-lg"
-  - if allowed_to?(:create?, post, with: RejectPolicy)
-    = button_to "reject", post_reject_path(post), class: "bg-blue-300 p-2 rounded-lg"
+  .flex.gap-3.justify-center.my-5
+    - if allowed_to?(:edit?, post)
+      = link_to "edit", edit_region_post_path(post.region, post), class: btn_class
+    - if allowed_to?(:destroy?, post)
+      = link_to "destroy", post_path(post), data: { turbo_method: :delete }, class: btn_red_class
+    - if allowed_to?(:create?, post, with: ApprovePolicy)
+      = button_to "approve", post_approve_path(post), class: btn_green_class
+    - if allowed_to?(:create?, post, with: RejectPolicy)
+      = button_to "reject", post_reject_path(post), class: btn_red_class
