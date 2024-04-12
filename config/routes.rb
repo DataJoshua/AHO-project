@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   authenticate :user, ->(u) { u.has_role?(:admin) } do
     resource :dashboard, only: %i[show], module: :admin
+    
+    namespace :admin do
+      resources :registrations, only: %i[create]
+    end
 
     resources :posts, only: %i[], module: :posts do
       resource :approve, only: %i[create]

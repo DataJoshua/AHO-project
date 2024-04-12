@@ -11,3 +11,11 @@ h1
   | Your Posts
 - posts.each do |post|
   = render "shared/post", post: post
+
+h1
+  | Create admin
+
+= form_with(scope: :user, url: admin_registrations_path, turbo: false) do |f|
+  = f.text_field :email
+  = f.password_field :password
+  = f.submit
