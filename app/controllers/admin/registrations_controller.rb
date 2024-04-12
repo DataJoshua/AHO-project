@@ -1,5 +1,6 @@
 module Admin
   class RegistrationsController < ApplicationController
+    before_action :authenticate_user!
     expose :user
 
     def create
