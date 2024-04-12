@@ -1,8 +1,11 @@
-h1
-  = region.name
-h1
-  = region.description
-
-- region_posts.each do |post|
-  = render "shared/post", post: post
-end
+section[class=jumbo_wrapper_class]
+  h1[class=jumbo_title_class]
+    = region.name
+  p[class=jumbo_content_class]
+    = region.description
+  .max-w-xl.m-auto
+    .grid.grid-cols-2.items-center.gap-3.my-6
+      - region_posts.each do |post|
+        = render "shared/post", post: post
+  - if allowed_to?(:create?, region, with: PostPolicy)
+    = link_to "create new post", new_region_post_path(region), class: btn_class

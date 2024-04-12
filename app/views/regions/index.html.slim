@@ -1,9 +1,9 @@
-- regions.each do |region|
-  = link_to region do
-    .bg-slate-200.m-5
-      h1
-        = region.name
-    div
-      - if current_user.region === region
-        h1
-          | this is your region
+.flex.gap-6.flex-wrap.items-center.justify-center
+  - regions.each do |region|
+    = link_to region do
+      article[class="block max-w-sm p-6 bg-blue-300 hover:bg-blue-200 border border-gray-200 rounded-lg shadow relative z-1"]
+        h1[class="mb-2 text-2xl font-bold tracking-tight text-gray-900"]
+          = region.name
+        - if current_user.region === region
+          span[class=state_class]
+            | this is your region

@@ -1,22 +1,30 @@
-div[data-controller="transformer"]
+div
+  h1[class=dashboard_title_class]
+    | Filter By:
   = form_with(scope: :query, url: turbo_posts_path,
                             method: :get,
-                            class: "search-form",
+                            class: "max-w-lg flex gap-2 px-[400px]",
                             data: { turbo_stream: true,
                                     controller: "search" }) do |f|
-    = f.select :region, options_for_select([["", ""]].concat(Region.pluck(:name, :id))),{}, data: { action: "change->search#execute change->transformer#execute", transformer_target: "region" }, class: "search-input"
-    = f.select :author, options_for_select([["", ""]].concat(User.pluck(:email, :id))),{}, data: { action: "change->search#execute change->transformer#execute", transformer_target: "author" }, class: "search-input"
-    = f.text_field :date, data: { controller: "flatpickr", action: "change->search#execute change->transformer#execute", transformer_target: "date" }, class: "search-input-date"
+    .mb-5.flex.gap-2.items-center
+      = f.label :region, class: label_class
+      = f.select :region, options_for_select([["", ""]].concat(Region.pluck(:name, :id))),{}, data: { action: "change->search#execute change->transformer#execute", transformer_target: "region" }, class: "rounded-lg"
+    .mb-5.flex.gap-2.items-center
+      = f.label :author, class: label_class    
+      = f.select :author, options_for_select([["", ""]].concat(User.pluck(:email, :id))),{}, data: { action: "change->search#execute change->transformer#execute", transformer_target: "author" }, class: "rounded-lg"
+    .mb-5.flex.gap-2.items-center
+      = f.label :date, class: label_class
+      = f.text_field :date, data: { controller: "flatpickr", action: "change->search#execute change->transformer#execute", transformer_target: "date" }, class: "rounded-lg", placeholder: "Select date"
 
-  = form_with(scope: :query, url: turbo_spreadsheet_path, data: { turbo_stream: true }, class: "exel-form") do |f|
-    = f.hidden_field :region, data: { transformer_target: "regionC" }, class: "exel-input"
-    = f.hidden_field :author, data: { transformer_target: "authorC" }, class: "exel-input"
-    = f.hidden_field :date, data: { transformer_target: "dateC" }, class: "exel-input"
+  = form_with(scope: :query, url: turbo_spreadsheet_path, data: { turbo_stream: true }, class: "flex items-center justify-center") do |f|
+    = f.hidden_field :region, data: { transformer_target: "regionC" }
+    = f.hidden_field :author, data: { transformer_target: "authorC" }
+    = f.hidden_field :date, data: { transformer_target: "dateC" }
 
-    = f.submit "Convert to exel (xlsx)", class: "exel-input-submit"
+    = f.submit "Convert to exel (xlsx)", class: btn_green_class
 
 = turbo_frame_tag "exels-wrapper" do
   = render "exels", exels: exels
 
-= turbo_frame_tag "post-wrapper" do
+= turbo_frame_tag "post-wrapper", class: "flex justify-center" do
   = render "posts", posts: posts
