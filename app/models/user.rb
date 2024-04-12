@@ -10,5 +10,5 @@ class User < ApplicationRecord
 
   attr_accessor :admin_created
 
-  validates :region, presence: true, unless: :admin_created
+  validates :region, presence: true, unless: :admin_created, on: :create
 end
