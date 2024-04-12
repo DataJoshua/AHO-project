@@ -4,7 +4,7 @@
                                    controller: "search" }) do |f|
   = f.select :region, options_for_select([["", ""]].concat(Region.pluck(:name, :id))),{}, data: { action: "change->search#execute"}
   = f.select :author, options_for_select([["", ""]].concat(User.pluck(:email, :id))),{}, data: { action: "change->search#execute"}
-  = f.date_field :date, data: { action: "change->search#execute" }
+  = f.text_field :date, data: { controller: "flatpickr", action: "change->search#execute" }
 
 = turbo_frame_tag "post-wrapper" do
   = render "posts", posts: posts

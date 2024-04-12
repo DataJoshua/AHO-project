@@ -14,7 +14,7 @@ class PostQuery < BaseQuery
   def by_date(relation, value)
     return relation if value.blank?
 
-    date = value.split(" — ")
+    date = value.split(" to ")
 
     start_date = Date.parse(date.first)
     end_date = Date.parse(date.last) + 1.day
