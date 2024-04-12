@@ -9,6 +9,8 @@ gem "devise", "~> 4.9"
 
 gem "seedbank"
 
+gem "pagy"
+
 gem "discard"
 
 gem "rubocop", require: false

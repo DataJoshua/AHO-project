@@ -3,7 +3,7 @@
     = "Добро пожаловать #{current_user.email}"
 
   h1[class=dashboard_title_class]
-    | Your Posts
+    | Ваши посты
   .grid.grid-cols-2.items-center.gap-3.my-6
     - posts.each do |post|
       article[class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow relative"]
@@ -19,3 +19,4 @@
           = link_to "show", post_path(post), class: btn_class
 
   = link_to "create new post", new_region_post_path(current_user.region), class: btn_class
+  = link_to "go to your region", region_path(current_user.region), class: btn_class
