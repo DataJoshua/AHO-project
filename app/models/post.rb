@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include SpreadsheetArchitect
   include Discard::Model
   extend Enumerize
 

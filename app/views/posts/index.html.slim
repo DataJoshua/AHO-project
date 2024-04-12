@@ -1,10 +1,22 @@
-= form_with(scope: :query, url: turbo_posts_path,
-                           method: :get,
-                           data: { turbo_stream: true,
-                                   controller: "search" }) do |f|
-  = f.select :region, options_for_select([["", ""]].concat(Region.pluck(:name, :id))),{}, data: { action: "change->search#execute"}
-  = f.select :author, options_for_select([["", ""]].concat(User.pluck(:email, :id))),{}, data: { action: "change->search#execute"}
-  = f.text_field :date, data: { controller: "flatpickr", action: "change->search#execute" }
+div[data-controller="transformer"]
+  = form_with(scope: :query, url: turbo_posts_path,
+                            method: :get,
+                            class: "search-form",
+                            data: { turbo_stream: true,
+                                    controller: "search" }) do |f|
+    = f.select :region, options_for_select([["", ""]].concat(Region.pluck(:name, :id))),{}, data: { action: "change->search#execute change->transformer#execute", transformer_target: "region" }, class: "search-input"
+    = f.select :author, options_for_select([["", ""]].concat(User.pluck(:email, :id))),{}, data: { action: "change->search#execute change->transformer#execute", transformer_target: "author" }, class: "search-input"
+    = f.text_field :date, data: { controller: "flatpickr", action: "change->search#execute change->transformer#execute", transformer_target: "date" }, class: "search-input-date"
+
+  = form_with(scope: :query, url: turbo_spreadsheet_path, data: { turbo_stream: true }, class: "exel-form") do |f|
+    = f.hidden_field :region, data: { transformer_target: "regionC" }, class: "exel-input"
+    = f.hidden_field :author, data: { transformer_target: "authorC" }, class: "exel-input"
+    = f.hidden_field :date, data: { transformer_target: "dateC" }, class: "exel-input"
+
+    = f.submit "Convert to exel (xlsx)", class: "exel-input-submit"
+
+= turbo_frame_tag "exels-wrapper" do
+  = render "exels", exels: exels
 
 = turbo_frame_tag "post-wrapper" do
   = render "posts", posts: posts

@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   expose :posts, -> { Post.approved.includes(:region, user: %i[roles]).kept }
   expose :post
+  expose :exels, -> { current_user.exels }
 
   def index; end
 

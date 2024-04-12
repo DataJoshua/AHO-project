@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   namespace :turbo do
     resources :posts, only: %i[index]
+    resource :spreadsheet, only: %i[create]
   end
 
   resources :posts, only: %i[index show destroy]

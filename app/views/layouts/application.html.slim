@@ -11,6 +11,7 @@ html
     = javascript_importmap_tags
 
   body
-    = render "layouts/flash"
+    = turbo_frame_tag "flash-wrapper" do
+      = render "layouts/flash"
     main
       = yield
