@@ -1,3 +1,13 @@
+nav class="w-full rounded-md mx-8"
+  ol class="list-reset flex"
+    li
+      = link_to "Регионы", regions_path, class: breadcrumb_link
+    li
+      span class="mx-2 text-neutral-400"
+        | /
+    li class="text-neutral-400"
+      = region.name
+
 section[class=jumbo_wrapper_class]
   h1[class=jumbo_title_class]
     = region.name
