@@ -4,17 +4,15 @@
 
   - if posts_under_review.any?
     .text-center.text-lg
-      | Posts Under review
+      | Посты на рассмотрении
     .grid.grid-cols-2.items-center.gap-3.my-6
       - posts_under_review.each do |post|
         = render "shared/post", post: post
 
   h1[class=dashboard_title_class]
-    | Your Posts
+    | Ваши посты
 
-  .grid.grid-cols-2.items-center.gap-3.my-6
-    - posts.each do |post|
-      = render "shared/post", post: post
+  = render "posts/posts", posts: posts, pagy_posts: pagy_posts
 
 article[class="my-5 max-w-sm mx-auto bg-slate-100 p-3 rounded-lg"]
   h1[class=dashboard_title_class]
