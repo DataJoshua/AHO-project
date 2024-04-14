@@ -1,3 +1,7 @@
-.grid.grid-cols-2.items-center.gap-3.my-6
-  - posts.each do |post|
-    = render "shared/post", post: post
+div[class="grid grid-cols-1 lg:grid-cols-2 items-center gap-3 my-6"]
+  - if posts.any?
+    - posts.each do |post|
+      = render "shared/post", post: post
+  - else
+    h1[class=dashboard_title_class]
+      | Посты не найдены
