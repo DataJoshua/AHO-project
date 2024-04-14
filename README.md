@@ -11,7 +11,8 @@ FullStack проект на Rails
 * password: abcdF2!
 
 Используемые технологии:
-* stimulus-turbo
+* stimulus controllers
+* turbo streams
 * sidekiq
 * devise (auth)
 * rubocop
