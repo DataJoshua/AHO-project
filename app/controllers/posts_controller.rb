@@ -3,7 +3,10 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action -> { authorize! post }
 
-  expose :posts, -> { Post.approved.includes(:region, user: %i[roles]).kept }
+  expose :raw_posts, -> { Post.approved.includes(:region, user: %i[roles]).kept }
+  expose :pagy_posts, -> { pagy(raw_posts) }
+  expose :posts, -> { pagy_posts.last }
+
   expose :post
   expose :exels, -> { current_user.exels }
 

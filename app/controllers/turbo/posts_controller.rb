@@ -3,7 +3,10 @@ module Turbo
     include Rails.application.routes.url_helpers
 
     expose :raw_posts, -> { Post.approved.kept }
-    expose :posts, -> { PostQuery.new(query_params, raw_posts).all }
+    expose :filtered_posts, -> { PostQuery.new(query_params, raw_posts).all }
+    expose :pagy_posts, -> { pagy(filtered_posts, anchor_string: "data-turbo-stream='true'") }
+
+    expose :posts, -> { pagy_posts.last }
 
     def index; end
 
