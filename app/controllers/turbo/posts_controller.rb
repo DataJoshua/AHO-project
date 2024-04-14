@@ -4,7 +4,7 @@ module Turbo
 
     expose :raw_posts, -> { Post.approved.kept }
     expose :filtered_posts, -> { PostQuery.new(query_params, raw_posts).all }
-    expose :pagy_posts, -> { pagy(filtered_posts, anchor_string: "data-turbo-stream='true'") }
+    expose :pagy_posts, -> { pagy(filtered_posts, items: 6, anchor_string: "data-turbo-stream='true'") }
 
     expose :posts, -> { pagy_posts.last }
 

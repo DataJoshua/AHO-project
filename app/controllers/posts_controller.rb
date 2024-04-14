@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action -> { authorize! post }
 
   expose :raw_posts, -> { Post.approved.includes(:region, user: %i[roles]).kept }
-  expose :pagy_posts, -> { pagy(raw_posts) }
+  expose :pagy_posts, -> { pagy(raw_posts, items: 6) }
   expose :posts, -> { pagy_posts.last }
 
   expose :post
