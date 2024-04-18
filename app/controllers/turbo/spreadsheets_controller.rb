@@ -6,23 +6,30 @@ module Turbo
     expose :raw_posts, -> { Post.approved.kept }
     expose :posts, -> { PostQuery.new(query_params, raw_posts).all }
 
-    expose :exels, -> { current_user.exels }
+    expose :exels, ->  { current_user.exels.order(created_at: :desc) }
 
     # rubocop:disable Metrics/AbcSize
     def create
       file_data = Post.to_xlsx(instances: posts.to_a, spreadsheet_columns: lambda { |instance|
-        [
-          :title,
-          :created_at,
-          :updated_at,
-          ["Approved_at", instance.approved_at || "Created by Admin"],
-          ["URL", post_url(instance.id)]
+        data = [
+          ["Заголовок", instance.title],
+          ["Дата создания", instance.created_at],
+          ["Дата утверждения", instance.approved_at || "Создано администратором"],
+          ["Ссылка на пост", post_url(instance.id)],
+          ["Вложение", "Ссылки на вложения, если они есть:"]
         ]
+
+        instance.content.body.attachables.each do |attachment|
+          data.push ["Вложение", rails_blob_url(attachment)]
+        end
+
+        data
       })
 
-      name = "#{SecureRandom.uuid}_#{Time.zone.now}"
+      time = Time.zone.now.strftime("%d-%m-%Y_%H:%M:%S")
+      name = "#{SecureRandom.uuid}_#{time}"
 
-      exel = Exel.new(user: current_user, label: "#{Time.zone.now}.xlsx")
+      exel = Exel.new(user: current_user, label: "#{time}.xlsx")
       exel.file.attach(io: StringIO.new(file_data), filename: "#{name}.xlsx")
 
       if exel.save

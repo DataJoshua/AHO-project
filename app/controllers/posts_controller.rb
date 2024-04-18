@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   expose :posts, -> { pagy_posts.last }
 
   expose :post
-  expose :exels, -> { current_user.exels }
+  expose :exels, -> { current_user.exels.order(created_at: :desc) }
 
   def index; end
 

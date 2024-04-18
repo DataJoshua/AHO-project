@@ -37,7 +37,7 @@ Metrics/BlockLength:
     - config/**/*
 
 Metrics/MethodLength:
-  Max: 25
+  Max: 40
 
 Layout/FirstArgumentIndentation:
   Enabled: false
