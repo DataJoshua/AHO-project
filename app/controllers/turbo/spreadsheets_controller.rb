@@ -6,7 +6,7 @@ module Turbo
     expose :raw_posts, -> { Post.approved.kept }
     expose :posts, -> { PostQuery.new(query_params, raw_posts).all }
 
-    expose :exels, ->  { current_user.exels.order(created_at: :desc) }
+    expose :exels, -> { current_user.exels.order(created_at: :desc) }
 
     # rubocop:disable Metrics/AbcSize
     def create
