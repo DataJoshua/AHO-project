@@ -1,6 +1,6 @@
 article[class="flex lg:flex-row flex-col justify-around mx-[10%] gap-8" data-controller="transformer"]
   aside
-    .py-8[class=dashboard_title_class]
+    .py-8.title-primary
       | Фильтровать посты по:
     = form_with(scope: :query, url: turbo_posts_path,
                               method: :get,
@@ -8,13 +8,13 @@ article[class="flex lg:flex-row flex-col justify-around mx-[10%] gap-8" data-con
                               data: { turbo_stream: true,
                                       controller: "search" }) do |f|
       .mb-5
-        = f.label :region, class: label_class
+        = f.label :region, class: "form-label"
         = f.select :region, options_for_select([["Все регионы", ""]].concat(Region.pluck(:name, :id))),{}, data: { action: "change->search#execute change->transformer#execute", transformer_target: "region" }, class: "rounded-lg"
       .mb-5
-        = f.label :author, class: label_class    
+        = f.label :author, class: "form-label"    
         = f.select :author, options_for_select([["Все авторы", ""]].concat(User.pluck(:email, :id))),{}, data: { action: "change->search#execute change->transformer#execute", transformer_target: "author" }, class: "rounded-lg"
       .mb-5
-        = f.label :date, class: label_class
+        = f.label :date, class: "form-label"
         = f.text_field :date, data: { controller: "flatpickr", action: "change->search#execute change->transformer#execute", transformer_target: "date" }, class: "rounded-lg", placeholder: "Select date"
 
     = form_with(scope: :query, url: turbo_spreadsheet_path, data: { turbo_stream: true }, class: "flex pt-8 items-center justify-center") do |f|
@@ -22,7 +22,7 @@ article[class="flex lg:flex-row flex-col justify-around mx-[10%] gap-8" data-con
       = f.hidden_field :author, data: { transformer_target: "authorC" }
       = f.hidden_field :date, data: { transformer_target: "dateC" }
 
-      = f.submit "Convert to exel (xlsx)", class: btn_green_class
+      = f.submit "Convert to exel (xlsx)", class: "btn-green"
 
     = turbo_frame_tag "exels-wrapper" do
       = render "exels", exels: exels

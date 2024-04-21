@@ -1,4 +1,4 @@
-h1[class=dashboard_title_class]
+.title-primary
   | Измените свои данные 
 
 .max-w-sm.mx-auto
@@ -6,21 +6,21 @@ h1[class=dashboard_title_class]
     = render "devise/shared/error_messages", resource: resource
 
     .mb-5
-      = f.label :email, class: label_class
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: input_class
+      = f.label :email, class: "form-label"
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input"
 
     .mb-5
       = f.label "New password"
-      = f.password_field :password, autocomplete: "new-password", class: input_class
+      = f.password_field :password, autocomplete: "new-password", class: "form-input"
 
     .mb-5
-      = f.label :password_confirmation, class: label_class
-      = f.password_field :password_confirmation, autocomplete: "new-password", class: input_class
+      = f.label :password_confirmation, class: "form-label"
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input"
 
     .mb-5
-      = f.label :current_password, class: label_class
-      = f.password_field :current_password, autocomplete: "current-password", class: input_class
+      = f.label :current_password, class: "form-label"
+      = f.password_field :current_password, autocomplete: "current-password", class: "form-input"
 
     .actions.flex.gap-2.flex-col
-      = f.submit "Update", class: input_button_green_class
-      = link_to "Back", :back, class: input_button_class
+      = f.submit "Update", class: "form-submit-primary"
+      = link_to "Back", :back, class: "form-submit"

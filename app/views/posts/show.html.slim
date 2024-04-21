@@ -1,29 +1,29 @@
-nav class="w-full rounded-md mx-8"
+.breadcrumb-container
   ol class="list-reset flex"
     li
-      = link_to "Регионы", regions_path, class: breadcrumb_link
+      = link_to "Регионы", regions_path, class: "breadcrumb-link"
     li
       span class="mx-2 text-neutral-400"
         | /
     li
-      = link_to post.region.name, region_path(post.region), class: breadcrumb_link
+      = link_to post.region.name, region_path(post.region), class: "breadcrumb-link"
     li
       span class="mx-2 text-neutral-400"
         | /
     li class="text-neutral-400"
       = post.title
 
-section[class=jumbo_wrapper_class]
-  h1[class=jumbo_title_class]
+.jumbo-item-wrapper
+  .jumbo-item-title
     = post.title
-  p[class=jumbo_content_class]
+  .jumbo-content
     = post.content
   .flex.gap-3.justify-center.my-5
     - if allowed_to?(:edit?, post)
-      = link_to "edit", edit_region_post_path(post.region, post), class: btn_class
+      = link_to "edit", edit_region_post_path(post.region, post), class: "btn"
     - if allowed_to?(:destroy?, post)
-      = link_to "destroy", post_path(post), data: { turbo_method: :delete }, class: btn_red_class
+      = link_to "destroy", post_path(post), data: { turbo_method: :delete }, class: "btn-red"
     - if allowed_to?(:create?, post, with: ApprovePolicy)
-      = button_to "approve", post_approve_path(post), class: btn_green_class
+      = button_to "approve", post_approve_path(post), class: "btn-green"
     - if allowed_to?(:create?, post, with: RejectPolicy)
-      = button_to "reject", post_reject_path(post), class: btn_red_class
+      = button_to "reject", post_reject_path(post), class: "btn-red"

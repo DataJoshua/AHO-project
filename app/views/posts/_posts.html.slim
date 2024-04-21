@@ -5,5 +5,5 @@
   .flex.justify-center.py-5
     == pagy_nav(pagy_posts.first) if pagy_posts.first.pages > 1 
 - else
-  h1[class=dashboard_title_class]
+  .title-primary
     | Посты не найдены

@@ -1,4 +1,4 @@
-h1[class=dashboard_title_class]
+.title-primary
   | Зарегистрироваться
 
 .max-w-sm.mx-auto
@@ -6,27 +6,27 @@ h1[class=dashboard_title_class]
     = render "devise/shared/error_messages", resource: resource
 
     .mb-5
-      = f.label :email, class: label_class
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: input_class
+      = f.label :email, class: "form-label"
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input"
 
     .mb-5
-      = f.label :password, class: label_class
+      = f.label :password, class: "form-label"
       - if @minimum_password_length
         div
           = @minimum_password_length 
           span
             |  characters minimum
 
-      = f.password_field :password, autocomplete: "new-password", class: input_class
+      = f.password_field :password, autocomplete: "new-password", class: "form-input"
     
     .mb-5
-      = f.label :password_confirmation, class: label_class
-      = f.password_field :password_confirmation, autocomplete: "new-password", class: input_class
+      = f.label :password_confirmation, class: "form-label"
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input"
 
     .mb-5
-      = f.label :region, class: label_class
-      = f.select :region_id, options_for_select([["Select Region", ""]].concat(Region.pluck(:name, :id))), {} , class: input_class
+      = f.label :region, class: "form-label"
+      = f.select :region_id, options_for_select([["Select Region", ""]].concat(Region.pluck(:name, :id))), {} , class: "form-input"
 
     .actions.flex.gap-2.flex-col
-      = f.submit "Sign up", class: input_button_green_class
+      = f.submit "Sign up", class: "form-submit-primary"
       = render "devise/shared/links"

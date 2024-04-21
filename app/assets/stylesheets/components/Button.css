@@ -1,0 +1,37 @@
+.btn {
+  @apply text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2;
+}
+
+.btn:hover {
+  @apply cursor-pointer bg-blue-800;
+}
+
+.btn:focus {
+  @apply ring-4 ring-blue-300 outline-none;
+}
+
+.btn-red {
+  @apply btn;
+  @apply bg-red-700;
+}
+
+.btn-red:hover {
+  @apply cursor-pointer bg-red-800; 
+}
+
+.btn-red:focus {
+  @apply ring-4 ring-red-300 outline-none;
+}
+
+.btn-green {
+  @apply btn;
+  @apply bg-green-700;
+}
+
+.btn-green:hover {
+  @apply cursor-pointer bg-green-800; 
+}
+
+.btn-green:focus {
+  @apply ring-4 ring-green-300 outline-none;
+}

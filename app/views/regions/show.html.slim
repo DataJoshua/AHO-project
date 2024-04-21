@@ -1,21 +1,21 @@
-nav class="w-full rounded-md mx-8"
+.breadcrumb-container
   ol class="list-reset flex"
     li
-      = link_to "Регионы", regions_path, class: breadcrumb_link
+      = link_to "Регионы", regions_path, class: "breadcrumb-link"
     li
       span class="mx-2 text-neutral-400"
         | /
     li class="text-neutral-400"
       = region.name
 
-section[class=jumbo_wrapper_class]
-  h1[class=jumbo_title_class]
+.jumbo-item-wrapper
+  .jumbo-item-title
     = region.name
-  p[class=jumbo_content_class]
+  .jumbo-content
     = region.description
-  .max-w-xl.m-auto
-    .grid.grid-cols-2.items-center.gap-3.my-6
+  .region-posts-wrapper
+    .posts-grid-container
       - region_posts.each do |post|
         = render "shared/post", post: post
   - if allowed_to?(:create?, region, with: PostPolicy)
-    = link_to "create new post", new_region_post_path(region), class: btn_class
+    = link_to "create new post", new_region_post_path(region), class: "btn"

@@ -1,21 +1,21 @@
 
-header.border-b.border.border-300-slate
-  nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5"
-    div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl"
-      h1.text-xl
+.header-wrapper
+  nav[class="header-nav lg:header-nav__lg"]
+    .header-nav__wrapper
+      .text-xl
         - if user_signed_in?
           = "Welcome #{current_user.email}"
         - else
           = "Welcome"
 
-      div class="justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2"
-        ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0"
+      nav[class="nav-wrapper lg:nav-wrapper__lg"]
+        ul[class="nav-buttons lg:nav-buttons__lg"]
           - if user_signed_in?
-            = link_to "Регионы", root_path, class: header_link_class
-            = link_to "Посты", posts_path, class: header_link_class
-            = link_to "Панель", dashboard_path, class: header_link_class
-            = link_to "Обо мне", edit_user_registration_path, class: header_link_class
-            = link_to "Выйти", destroy_user_session_path, data: { turbo_method: :delete }, class: header_link_class
+            = link_to "Регионы", root_path, class: "header-link lg:header-link__lg"
+            = link_to "Посты", posts_path, class: "header-link lg:header-link__lg"
+            = link_to "Панель", dashboard_path, class: "header-link lg:header-link__lg"
+            = link_to "Обо мне", edit_user_registration_path, class: "header-link lg:header-link__lg"
+            = link_to "Выйти", destroy_user_session_path, data: { turbo_method: :delete }, class: "header-link lg:header-link__lg"
           - else
-            = link_to "Войти", new_user_session_path, class: header_link_class
-            = link_to "Зарегистрироваться", new_user_registration_path, class: header_link_class
+            = link_to "Войти", new_user_session_path, class: "header-link lg:header-link__lg"
+            = link_to "Зарегистрироваться", new_user_registration_path, class: "header-link lg:header-link__lg"

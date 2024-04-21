@@ -1,0 +1,25 @@
+@layer components {
+  .flash-wrapper {
+    @apply w-full flex items-center justify-center py-4;
+  }
+
+  .flash-container {
+    @apply items-center w-full max-w-xs p-4 text-gray-500 bg-white rounded-lg shadow;
+  }
+
+  .flash-icon {
+    @apply items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg;
+  }
+
+  .flash-cross-icon {
+    @apply ms-auto bg-white text-gray-400 rounded-lg p-1.5 inline-flex items-center justify-center h-8 w-8;
+  }
+
+  .flash-cross-icon:focus {
+    @apply ring-2 ring-gray-300;
+  }
+
+  .flash-cross-icon:hover {
+    @apply text-gray-900 bg-gray-100 cursor-pointer;
+  }
+}
