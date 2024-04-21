@@ -13,10 +13,10 @@ nav class="w-full rounded-md mx-8"
     li class="text-neutral-400"
       = post.title
 
-section[class=jumbo_wrapper_class]
-  h1[class=jumbo_title_class]
+.jumbo-item-wrapper
+  .jumbo-item-title
     = post.title
-  p[class=jumbo_content_class]
+  .jumbo-content
     = post.content
   .flex.gap-3.justify-center.my-5
     - if allowed_to?(:edit?, post)
