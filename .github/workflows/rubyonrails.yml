@@ -37,6 +37,9 @@ jobs:
       - name: Set up database schema
         run: bin/rails db:schema:load
 
+      - name: Load seeds
+        run: bin/rails db:migrate
+
   lint:
     runs-on: ubuntu-latest
     steps:
