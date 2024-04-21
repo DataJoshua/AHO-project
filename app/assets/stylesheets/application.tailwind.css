@@ -10,3 +10,6 @@
 @import "./components/regions/Show.css";
 @import "./components/Jumbo.css";
 @import "./components/Breadcrumb.css";
+@import "./components/Form.css";
+@import "./components/Dashboard.css";
+@import "./components/Post.css";
