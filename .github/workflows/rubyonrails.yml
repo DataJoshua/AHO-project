@@ -48,4 +48,4 @@ jobs:
           bundler-cache: true
       # Add or replace any other lints here
       - name: Rubocop linter
-        run: bin/rubocop --parallel
+        run: bundle exec rubocop
