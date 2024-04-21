@@ -18,4 +18,4 @@ section[class=jumbo_wrapper_class]
       - region_posts.each do |post|
         = render "shared/post", post: post
   - if allowed_to?(:create?, region, with: PostPolicy)
-    = link_to "create new post", new_region_post_path(region), class: btn_class
+    = link_to "create new post", new_region_post_path(region), class: "btn"

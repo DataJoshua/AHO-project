@@ -9,14 +9,14 @@
       article[class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow relative"]
         h1[class="mb-2 text-2xl font-bold tracking-tight text-gray-900"]
           = post.title
-        span[class=state_class]
+        .state-label
           = post.state
         .flex.gap-2.flex-col
           - if allowed_to?(:create?, post, with: SendReviewPolicy)
-            = button_to "Ask for review", post_send_review_path(post), class: btn_green_class
+            = button_to "Ask for review", post_send_review_path(post), class: "btn-green"
           - if allowed_to?(:destroy?, post)
-            = link_to "destroy", post_path(post), data: { turbo_method: :delete }, class: btn_red_class
-          = link_to "show", post_path(post), class: btn_class
+            = link_to "destroy", post_path(post), data: { turbo_method: :delete }, class: "btn-red"
+          = link_to "show", post_path(post), class: "btn"
 
-  = link_to "create new post", new_region_post_path(current_user.region), class: btn_class
-  = link_to "go to your region", region_path(current_user.region), class: btn_class
+  = link_to "create new post", new_region_post_path(current_user.region), class: "btn"
+  = link_to "go to your region", region_path(current_user.region), class: "btn"

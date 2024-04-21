@@ -1,0 +1,4 @@
+.state-label {
+  @apply absolute rounded-lg bg-blue-100 py-1 px-2;
+  @apply border border-blue-500 text-sm top-[-5%] right-[-5%] z-10;
+}

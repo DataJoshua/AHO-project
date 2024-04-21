@@ -20,10 +20,10 @@ section[class=jumbo_wrapper_class]
     = post.content
   .flex.gap-3.justify-center.my-5
     - if allowed_to?(:edit?, post)
-      = link_to "edit", edit_region_post_path(post.region, post), class: btn_class
+      = link_to "edit", edit_region_post_path(post.region, post), class: "btn"
     - if allowed_to?(:destroy?, post)
-      = link_to "destroy", post_path(post), data: { turbo_method: :delete }, class: btn_red_class
+      = link_to "destroy", post_path(post), data: { turbo_method: :delete }, class: "btn-red"
     - if allowed_to?(:create?, post, with: ApprovePolicy)
-      = button_to "approve", post_approve_path(post), class: btn_green_class
+      = button_to "approve", post_approve_path(post), class: "btn-green"
     - if allowed_to?(:create?, post, with: RejectPolicy)
-      = button_to "reject", post_reject_path(post), class: btn_red_class
+      = button_to "reject", post_reject_path(post), class: "btn-red"

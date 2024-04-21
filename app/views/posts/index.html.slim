@@ -22,7 +22,7 @@ article[class="flex lg:flex-row flex-col justify-around mx-[10%] gap-8" data-con
       = f.hidden_field :author, data: { transformer_target: "authorC" }
       = f.hidden_field :date, data: { transformer_target: "dateC" }
 
-      = f.submit "Convert to exel (xlsx)", class: btn_green_class
+      = f.submit "Convert to exel (xlsx)", class: "btn-green"
 
     = turbo_frame_tag "exels-wrapper" do
       = render "exels", exels: exels
