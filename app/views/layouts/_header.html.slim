@@ -9,7 +9,7 @@
           = "Welcome"
 
       nav[class="nav-wrapper lg:nav-wrapper__lg"]
-        ul[class="nav-buttons sm:nav-buttons__lg"]
+        ul[class="nav-buttons lg:nav-buttons__lg"]
           - if user_signed_in?
             = link_to "Регионы", root_path, class: "header-link lg:header-link__lg"
             = link_to "Посты", posts_path, class: "header-link lg:header-link__lg"
