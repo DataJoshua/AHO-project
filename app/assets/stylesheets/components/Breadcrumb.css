@@ -1,0 +1,10 @@
+@layer components {
+  .breadcrumb-container {
+    @apply w-full rounded-md mx-8;
+  }
+
+  .breadcrumb-link {
+    @apply text-black transition duration-150 ease-in-out;
+    @apply hover:underline;
+  }
+}
